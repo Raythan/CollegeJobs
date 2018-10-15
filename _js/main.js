@@ -16,7 +16,7 @@ function frontEnd(){
 	<div id="separator2" style="border:solid;margin:.5% auto .5% auto;border-radius:6px"></div>
 	`,
 	middle = `
-	<div id="middleLeft" style="width:5%;height:5%;display:block;">
+	<div id="middleLeft" style="width:5%;height:5%;display:block;" title="formTipoSelect">
 		<form id="selectionForm" method="GET" style="height:80%">
 			<select onchange="SelectSemester()" multiple id="selectSemester" style="height:100%;width:100%;font-size:20px;text-align:center;">
 				<option value="0">Select some...</option>
@@ -29,14 +29,6 @@ function frontEnd(){
 				<option value="7">7º Semester</option>
 				<option value="8">8º Semester</option>
 			</select>
-		</form>
-		<form id="configForm" style="display:none">
-			<fieldset style="width:80%">
-			<p><input id="configStyle1" type="color" value="#FFFFFF" name="configStyle1"/> Background Title Color</p>
-			<p><input id="configStyle2" type="color" name="configStyle2"/> Font Title Color</p>
-			<p><input id="configStyle3" type="color" name="configStyle3"/> Page Font Color</p>
-			<p><input id="configStyle4" type="color" value="#FFFFFF" name="configStyle4"/> Page background</p>
-			</fieldset>
 		</form>
 	</div>
 	
@@ -130,7 +122,7 @@ function formSem0(){
 	document.getElementById("divFormsForSelect").innerHTML = "";
 }
 function formSem1(){	
-	document.getElementById("divFormsForSelect").innerHTML = "That's really bad, cause no execises on first semester...";
+	document.getElementById("divFormsForSelect").innerHTML = "That's really bad, cause no exercises on first semester...";
 	
 }
 function formSem2(){
@@ -321,17 +313,66 @@ function displayNoneSeparator3(){
 }
 
 function displayBlockConfig(){	
-	var selectorForm = document.getElementById("selectionForm"),
-	configForm = document.getElementById("configForm");
+	var middleLeft = document.getElementById("middleLeft"),
+	middleLeftValue = document.getElementById("middleLeft").getAttribute("title"),
+	titulo = document.getElementById("titulo"),
+	middleRight = document.getElementById("middleRight");
+	configNow = `
+		<form id="configForm">
+			<fieldset style="width:80%">
+			<p><input id="configStyle1" type="color" value="#FFFFFF" name="configStyle1"/> Background Title Color</p>
+			<p><input id="configStyle2" type="color" name="configStyle2"/> Font Title Color</p>
+			<p><input id="configStyle3" type="color" name="configStyle3"/> Page Font Color</p>
+			<p><input id="configStyle4" type="color" value="#FFFFFF" name="configStyle4"/> Page background</p>
+			</fieldset>
+		</form>
+	`,
+	configBack = `
+		<form id="selectionForm" method="GET" style="height:80%">
+			<select onchange="SelectSemester()" multiple id="selectSemester" style="height:100%;width:100%;font-size:20px;text-align:center;">
+				<option value="0">Select some...</option>
+				<option value="1">1º Semester</option>
+				<option value="2">2º Semester</option>
+				<option value="3">3º Semester</option>
+				<option value="4">4º Semester</option>
+				<option value="5">5º Semester</option>
+				<option value="6">6º Semester</option>
+				<option value="7">7º Semester</option>
+				<option value="8">8º Semester</option>
+			</select>
+		</form>
+	`;
 	
-	if(configForm.style.display=="none"){
-		configForm.style.display = "block";
-		selectorForm.style.display = "none";
-	}else{
-		configForm.style.display = "none";
-		selectorForm.style.display = "block";
-		settingConfigIndex();
+	const info = {
+		info1: configNow,
+		info2: configBack
 	}
+	const insert1 = ` 
+		${info.info1} 
+	`,
+	insert2 = `
+		${info.info2}
+	`;
+	
+	var configAlterated = {
+		configStyle1: document.getElementById("configStyle1"), // background title color
+		configStyle2: document.getElementById("configStyle2"), // title color
+		configStyle3: document.getElementById("configStyle3"), // page font color
+		configStyle4: document.getElementById("configStyle4") // page background
+	}
+	
+	if(middleLeftValue=="formTipoSelect"){
+		middleLeft.innerHTML = insert1;
+		middleLeft.setAttribute("title", "formTipoSelect1");
+		
+	}else{
+		middleLeft.innerHTML = insert2;
+		middleLeft.setAttribute("title", "formTipoSelect");
+		titulo.style.background = configAlterated.configStyle1.value;
+		titulo.style.color = configAlterated.configStyle2.value;
+		middleRight.style.background = configAlterated.configStyle4.value;
+		middleRight.style.color = configAlterated.configStyle3.value;
+	} 
 }
 
 function displayBlockCurriculum(){
@@ -410,20 +451,6 @@ function displayBlockCurriculum(){
 		middleRight.innerHTML = rest;
 		displayNoneFooter();
 	}
-}
-
-
-function settingConfigIndex(){
-	var titulo = document.getElementById("titulo"),
-	middleRight = document.getElementById("middleRight"),
-	configStyle1 = document.getElementById("configStyle1"), // background title color
-	configStyle2 = document.getElementById("configStyle2"), // title color
-	configStyle3 = document.getElementById("configStyle3"), // page font color
-	configStyle4 = document.getElementById("configStyle4"); // page background
-	titulo.style.background = configStyle1.value;
-	titulo.style.color = configStyle2.value;
-	middleRight.style.background = configStyle4.value;
-	middleRight.style.color = configStyle3.value;
 }
 
 /**********************************************************************************************************/
@@ -842,42 +869,19 @@ function conversorDecimal(){
 		multiplicador[i] = Math.pow(2, potenciaPos);
 		i++;
 		potenciaPos++;
-		/*  Impressões para teste
-		document.write("Aqui Multiplicador: " + multiplicador.toString());
-		document.write("</br>");
-		document.write("Aqui checkPotencia: " + checkPotencia);
-		document.write("</br>");
-		document.write("Aqui Número: " + marcador);
-		document.write("</br>");
-		document.write("</br>"); */
 	}
-	/*  Impressões para teste
-	document.write("potenciaPos: " + potenciaPos + "</br>");
-	document.write("i: " + i + "</br>");
-	document.write("Multiplicador: " + multiplicador[i] + "</br></br>"); */
 	i--; // Redução de uma potência para sair da contagem do nulo
-	/*  Impressões para teste
-	document.write("i: " + i + "</br>");
-	document.write("Multiplicador: " + multiplicador[i] + "</br></br>"); */
 	document.write("<div id='resultadoBinario' style='display:block;font-size:34;text-align:center;margin-top:5%'>A representação binária do inteiro: " + marcador + "</br></br>É: ");
 	while (multiplicador[i] <= marcador){
 		if(multiplicador[i] + binario2 <= marcador){
 		binario = 1;
 		binario2 = binario2 + multiplicador[i];
 		document.write(binario);
-		// document.write("potenciaPos: " + potenciaPos + ", ");
-		// document.write("i: " + i + ", ");
-		// document.write("Binario2: " + binario2 + ", ");
-		// document.write("Multiplicador: " + multiplicador[i] + "</br></br>");
 		i--;
 		}
 		else if(multiplicador[i] + binario2 >= marcador){
 		binario = 0;
 		document.write(binario);
-		// document.write("potenciaPos: " + potenciaPos + ", ");
-		// document.write("Binario2: " + binario2 + ", ");
-		// document.write("i: " + i + ", ");
-		// document.write("Multiplicador: " + multiplicador[i] + "</br></br>");
 		i--;
 		}
 	}
@@ -902,15 +906,9 @@ function conversorBinario(){
 	contador1--;
 		if (numero < 0) {
 			while (contador1 >= 0){
-				// IMPRESSÕES PARA TESTE
-				/*document.write("Valor no vetor1: " + nome1[contador1] + "</br>");
-				document.write("Contador1: " + contador1 + "</br>");
-				document.write("Potencia: " + potencia + "</br>");
-				document.write("Valor da potencia: " + checkPotencia2 + "</br>");*/
 				if (nome1[contador1] === "1") {
 					resultado = resultado + checkPotencia2;
 				}
-				//document.write("Valor no vetor2: " + nome1[contador1] + "</br>");
 				checkPotencia2 = checkPotencia2 + checkPotencia2;
 				potencia++;
 				contador1--;
@@ -920,15 +918,9 @@ function conversorBinario(){
 		}
 	if (numero >= 0){
 		while (contador1 >= 0){
-			// IMPRESSÕES PARA TESTE
-			/*document.write("Valor no vetor1: " + nome1[contador1] + "</br>");
-			document.write("Contador1: " + contador1 + "</br>");
-			document.write("Potencia: " + potencia + "</br>");
-			document.write("Valor da potencia: " + checkPotencia2 + "</br>");*/
 			if (nome1[contador1] === "1") {
 				resultado = resultado + checkPotencia2;
 			}
-			//document.write("Valor no vetor2: " + nome1[contador1] + "</br>");
 			checkPotencia2 = checkPotencia2 + checkPotencia2;
 			potencia++;
 			contador1--;
