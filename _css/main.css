@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body {
+	height:100%;
+	font-family: 'Roboto', sans-serif;
+}
+fieldset {
+	width:60%;
+	border-radius: 6px;
+}
+.formSelecao {
+	opacity: 80%;
+	box-shadow: 2px 2px 2px #0f0f0f;
+	border-radius: 23px;
+	padding: .5%;
+}
+#titulo {
+	width:30%;
+	height:8%;
+}
+#curriculum{
+	padding:3%;
+}
+span.nomePrincipal{
+	font-size: 30px;
+	font-weight: bold;
+}	
+span.titulo{
+	font-size: 20px;
+	font-weight: bold;
+}
+span.subtitulo{
+	font-size: 12px;
+	padding-left: 13px;
+}

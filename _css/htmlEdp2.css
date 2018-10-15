@@ -1,0 +1,107 @@
+table{
+	text-align:center;
+	font-size:40px;
+	font-weight:bold;
+	border:2px solid;
+	padding:2px;
+}
+td{
+	width:150px;
+	border:3px solid;
+	border-color:grey;
+}
+th{
+	width:150px;
+	border: 3px solid;
+	border-color:grey;
+}
+#tit1{
+	background-color:red;
+}
+#tit2{
+	background-color:green;
+}
+#tit3{
+	background-color:blue;
+}
+#linha1{
+	background-color:red;
+}
+#linha2{
+	background-color:green;
+}
+#linha3{
+	background-color:blue;
+}
+td#celula1{
+	color:red;
+	background-color:red;
+	text-decoration:underline;
+}
+td#celula2{
+	color:yellow;
+	background-color:yellow;
+	text-decoration:underline;
+}
+td#celula3{
+	color:purple;
+	background-color:purple;
+	text-decoration:underline;
+}
+td#celula4{
+	color:yellow;
+	background-color:yellow;
+	text-decoration:underline;
+}
+td#celula5{
+	color:green;
+	background-color:green;
+	text-decoration:underline;
+}
+td#celula6{
+	color:cyan;
+	background-color:cyan;
+	text-decoration:underline;
+}
+td#celula7{
+	color:purple;
+	background-color:purple;
+	text-decoration:underline;
+}
+td#celula8{
+	color:cyan;
+	background-color:cyan;
+	text-decoration:underline;
+}
+td#celula9{
+	color:blue;
+	background-color:blue;
+	text-decoration:underline;
+}
+td#celula1:hover{
+	color:#fff;
+}
+td#celula2:hover{
+	color:#fff;
+}
+td#celula3:hover{
+	color:#fff;
+}
+td#celula4:hover{
+	color:#fff;
+}
+td#celula5:hover{
+	color:#fff;
+}
+td#celula6:hover{
+	color:#fff;
+}
+td#celula7:hover{
+	color:#fff;
+}
+td#celula8:hover{
+	color:#fff;
+}
+td#celula9:hover{
+	color:#fff;
+}
