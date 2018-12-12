@@ -10,6 +10,9 @@ function frontEnd(){
 	<form style="float:left" onclick="displayBlockCurriculum()">
 	<button style="width:60px" type="button"><img style="width:100%" title="Curriculum Vitae" src="http://prints.ultracoloringpages.com/8167676f801370cf4d65000ec994396c.png"/></button>
 	</form>
+	<form style="float:left" onclick="displayBlockMotivation()">
+	<button style="width:60px" type="button"><img style="width:100%" title="Motivational Channels" src="https://i0.wp.com/www.heversonbarbosa.com/wp-content/uploads/2017/05/seta.png"/></button>
+	</form>
 	<div id="titulo" style="text-align:center;font-size:200%;padding-top:.5%">
 		This is the summary of all my work in college since now.
 	</div>
@@ -66,30 +69,9 @@ function frontEnd(){
 	styleDivMiddleLeft();
 }
 
-function styleTitulo(){
-	var divTitulo = document.getElementById("titulo");
-	
-	if(divTitulo.style.width != "100%"){
-		divTitulo.style.width = tamanhoTitulo + '%';
-		setTimeout("styleTitulo()",10)
-		tamanhoTitulo+=1;
-	}
-}
-
-function styleDivMiddleLeft(){
-	var divMiddleLeft = document.getElementById("middleLeft");
-	
-	if(divMiddleLeft.style.width != "30%"){
-		divMiddleLeft.style.width = widthDivMiddleLeft + '%';
-		setTimeout("styleDivMiddleLeft()",150)
-		widthDivMiddleLeft+=.5;
-	}
-	if(divMiddleLeft.style.height != "38%"){
-		divMiddleLeft.style.height = heightDivMiddleLeft + '%';
-		setTimeout("styleDivMiddleLeft()",150)
-		heightDivMiddleLeft+=.5;
-	}
-}
+/****************************************************************************************************
+*						THIS IS THE FORM TO ALTERATE DURING COLLEGE									*
+****************************************************************************************************/
 
 function SelectSemester(){
 	var pickSelect = document.getElementById("selectSemester").value;
@@ -174,20 +156,24 @@ function formSem3(){
 			<p>
 				<input class='formSelecao' type='submit' onclick='listaTags()' value="List of tags for the first test!"/></br>
 				<input class='formSelecao' type='submit' onclick='edpHtml1()' value='First proposal exercises on HTML!'/></br>
-				<input class='formSelecao' type='submit' onclick='edpHtml2()' value='Second proposal exercises on HTML!'/>
+				<input class='formSelecao' type='submit' onclick='edpHtml2()' value='Second proposal exercises on HTML!'/></br>
+				<input class='formSelecao' type='submit' onclick='edpHtml3()' value='Third proposal exercise on HTML!'/>
 			</p><hr>
 			<p>
 				Luis Mariano's teacher exercises. || >>> Third semester <<<</br></br>
 				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano1()' value='A mixed of .cpp exercises!'/></br>
 				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano2()' value='Construct, Pointers .cpp exercises!'/></br>
-				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano3()' value='Stack exercises!'/>
+				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano3()' value='Stack exercises!'/></br>
+				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano4()' value='Queue exercises!'/>
 			</p><hr>
 			<p>
 				Ana's teacher exercises. || >>> Third semester <<<
 			</p>
 			<p>
 				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna1()' value='Interdisciplinary Project-Exercise1'/></br>
-				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna2()' value='Interdisciplinary Project-Exercise2'/>
+				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna2()' value='Interdisciplinary Project-Exercise2'/></br>
+				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna3()' value='Interdisciplinary Project-Exercise3 - Recursion'/></br>
+				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna4()' value='Interdisciplinary Project-Exercise4 - Miner'/>
 			</p>
 			<dl>
 				These buttons will take you to one of my pages on gitHub =)
@@ -222,7 +208,7 @@ function formSem7(){
 function formSem8(){
 	document.getElementById("divFormsForSelect").innerHTML = "This page is on going during the college!";
 }
-
+/***************************************************************************************************/
 
 /****************************************************************************************************
 *						THESE ARE ANCHORAGE BUTTONS FUNCTIONS										*
@@ -254,11 +240,20 @@ function cppGitHubThirdSemesterMariano2(){
 function cppGitHubThirdSemesterMariano3(){
 	window.open("https://github.com/Raythan/cppWorkClass/blob/master/simpleStack.cpp"); 
 }
+function cppGitHubThirdSemesterMariano4(){
+	window.open("https://github.com/Raythan/cppWorkClass/blob/master/simpleQueue.cpp");
+}
 function cppGitHubThirdSemesterAna1(){
 	window.open("https://github.com/Raythan/cppWorkClass/blob/master/interdisciplinaryProject1"); 
 }
 function cppGitHubThirdSemesterAna2(){
 	window.open("https://github.com/Raythan/cppWorkClass/blob/master/interdisciplinaryProject2"); 
+}
+function cppGitHubThirdSemesterAna3(){
+	window.open("https://github.com/Raythan/cppWorkClass/blob/master/recursividade_somando_indices_vetor"); 
+}
+function cppGitHubThirdSemesterAna4(){
+	window.open("https://github.com/Raythan/cppWorkClass/blob/master/miner.cpp"); 
 }
 /**********************************************************************************************************/
 
@@ -266,6 +261,31 @@ function cppGitHubThirdSemesterAna2(){
 /****************************************************************************************************
 *									STYLE ALTERATION FUNCTION										*
 ****************************************************************************************************/
+function styleTitulo(){
+	var divTitulo = document.getElementById("titulo");
+	
+	if(divTitulo.style.width != "100%"){
+		divTitulo.style.width = tamanhoTitulo + '%';
+		setTimeout("styleTitulo()",10)
+		tamanhoTitulo+=1;
+	}
+}
+
+function styleDivMiddleLeft(){
+	var divMiddleLeft = document.getElementById("middleLeft");
+	
+	if(divMiddleLeft.style.width != "30%"){
+		divMiddleLeft.style.width = widthDivMiddleLeft + '%';
+		setTimeout("styleDivMiddleLeft()",150)
+		widthDivMiddleLeft+=.5;
+	}
+	if(divMiddleLeft.style.height != "38%"){
+		divMiddleLeft.style.height = heightDivMiddleLeft + '%';
+		setTimeout("styleDivMiddleLeft()",150)
+		heightDivMiddleLeft+=.5;
+	}
+}
+
 function displayBlockMiddleRight(){
 	document.getElementById("middleLeft").style.float = "left";
 	
@@ -310,6 +330,80 @@ function displayNoneDivFormsForSelect(){
 }
 function displayNoneSeparator3(){
 	document.getElementById("separator3").style.display = "none";
+}
+
+function displayBlockMotivation(){
+	var divFormsForSelect = document.getElementById("divFormsForSelect");
+	
+	var infoToInsert = `
+		<div id="motivateAnchorage" class="motivation">
+			<table class="motivation">
+				<tr>
+					<span class="motivation">These are Brazilian Channels:</span>
+				</tr>
+				<tr>
+					<td>
+						<form action="https://www.youtube.com/channel/UCF1r_w8jqSdr7hcLmVO-42w" target="_blank">
+							<button type="submit"><img style="width:100%" title="Motivação Grid" src="https://yt3.ggpht.com/a-/AN66SAzVwG64401mWcr8Yj4mXr61uw4Quyqgjzy9lQ=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+					<td>
+						<form action="https://www.youtube.com/user/audiofive" target="_blank">
+							<button type="submit"><img style="width:100%" title="Nando Pinheiro" src="https://yt3.ggpht.com/a-/AN66SAwUcK_X23kjzcNgiKi_t1EQTLAtV3W9SI3Jmw=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+					<td>
+						<form action="https://www.youtube.com/channel/UCTHEfzCKG-VfKt1EaSMPQbA" target="_blank">
+							<button type="submit"><img style="width:100%" title="Motivação Feminina" src="https://yt3.ggpht.com/a-/AN66SAxR32VCxqdxymD4L-Cqqw4hNTs4zVK_vnmWXQ=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+					<td>
+						<form action="https://www.youtube.com/user/marombapedreiras" target="_blank">
+							<button type="submit"><img style="width:100%" title="B Motivation" src="https://yt3.ggpht.com/a-/AN66SAw5FD7KtYZRtiZ73UZPJi6-lHasPKI2p2pmEA=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form action="https://www.youtube.com/channel/UCzMH-coD7FkCSuOUrfUwmBg" target="_blank">
+							<button type="submit"><img style="width:100%" title="ALFAFLIX MOTIVACIONAL STUDY
+" src="https://yt3.ggpht.com/a-/AN66SAwLDnWS4XZZF0J_Z0-3y2wTO34ovls-_Z6OSA=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+					<td>
+						<form action="https://www.youtube.com/user/papodelider" target="_blank">
+							<button type="submit"><img style="width:100%" title="Wendel Carvalho" src="https://yt3.ggpht.com/a-/AN66SAwFTdkbndKfbcVR2FNJQtZYTqpfBpUX_4Volw=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+					<td>
+						<form action="https://www.youtube.com/channel/UClJtg-ez8iMwq_wRbX7ZttQ" target="_blank">
+							<button type="submit"><img style="width:100%" title="Thiago Rodrigo" src="https://yt3.ggpht.com/a-/AN66SAym6OfiJkT4Lvikl26VkABMNoUdL4v8RVOSng=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+					<td>
+						<form action="https://www.youtube.com/user/caiocarneiromv" target="_blank">
+							<button type="submit"><img style="width:100%" title="Caio Carneiro" src="https://yt3.ggpht.com/a-/AN66SAx8hO5dC2G5G7mDqGpJmS8cYPD9VARileMoPQ=s288-mo-c-c0xffffffff-rj-k-no"/></button>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			</br></br>If you have another sugestions please contact me...
+		</div>
+	`;
+	const infoIns = {
+		info: infoToInsert
+	}
+	const markup = ` ${infoIns.info} `;
+	
+	if(middleRight.style.display == "none"){
+		displayBlockMiddleRight();
+		divFormsForSelect.innerHTML = markup;
+	}else{
+		displayNoneMiddleRight();
+		divFormsForSelect.innerHTML = "";
+	}
 }
 
 function displayBlockConfig(){	
