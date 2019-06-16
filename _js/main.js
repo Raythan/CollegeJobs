@@ -158,14 +158,16 @@ function formSem3(){
 				<input class='formSelecao' type='submit' onclick='edpHtml1()' value='First proposal exercises on HTML!'/></br>
 				<input class='formSelecao' type='submit' onclick='edpHtml2()' value='Second proposal exercises on HTML!'/></br>
 				<input class='formSelecao' type='submit' onclick='edpHtml3()' value='Third proposal exercise on HTML!'/>
-			</p><hr>
-			<p>
-				Luis Mariano's teacher exercises. || >>> Third semester <<<</br></br>
-				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano1()' value='A mixed of .cpp exercises!'/></br>
-				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano2()' value='Construct, Pointers .cpp exercises!'/></br>
-				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano3()' value='Stack exercises!'/></br>
-				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano4()' value='Queue exercises!'/>
-			</p><hr>
+			</p>
+			<hr>
+				<p>
+					Luis Mariano's teacher exercises. || >>> Third semester <<<</br></br>
+					<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano1()' value='A mixed of .cpp exercises!'/></br>
+					<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano2()' value='Construct, Pointers .cpp exercises!'/></br>
+					<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano3()' value='Stack exercises!'/></br>
+					<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterMariano4()' value='Queue exercises!'/>
+				</p>
+			<hr>
 			<p>
 				Ana's teacher exercises. || >>> Third semester <<<
 			</p>
@@ -174,6 +176,9 @@ function formSem3(){
 				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna2()' value='Interdisciplinary Project-Exercise2'/></br>
 				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna3()' value='Interdisciplinary Project-Exercise3 - Recursion'/></br>
 				<input class='formSelecao' type='submit' onclick='cppGitHubThirdSemesterAna4()' value='Interdisciplinary Project-Exercise4 - Miner'/>
+			</p>
+			<p>
+				<input class='formSelecao' type='submit' onclick='GerarSenhaAleatoria()' value='Gerar senha aleatória'/>
 			</p>
 			<dl>
 				These buttons will take you to one of my pages on gitHub =)
@@ -194,7 +199,25 @@ function formSem3(){
 }
 
 function formSem4(){
-	document.getElementById("divFormsForSelect").innerHTML = "This page is on going during the college!";
+	var formFourthSemester = `
+	<fieldset><legend>Fourth semester exercises</legend>
+		<span>
+			For this semester, all the exercises was uploaded in the GitHub and I didn't have enable time for post it Here.
+		</span>
+		<form>
+			<p>
+				<input class='formSelecao' type='submit' onclick='GerarSenhaAleatoria()' value='Gerar senha aleatória'/>
+			</p>
+		</form>
+	</fieldset></br></br></br></br>
+	`;
+	const model = {
+		form: formFourthSemester
+	}
+	const insImp = `
+		${model.form}
+	`
+	document.getElementById("divFormsForSelect").innerHTML = insImp;
 }
 function formSem5(){
 	document.getElementById("divFormsForSelect").innerHTML = "This page is on going during the college!";
@@ -549,6 +572,47 @@ function displayBlockCurriculum(){
 
 /**********************************************************************************************************/
 
+function GerarSenhaAleatoria(){
+	var parte1 = [
+		`
+			<span>
+				This form will generate a random password containing a sizeable password using the characters from the below list.</br>
+				<p>
+					"<span id='listaDeCaracteresPossiveis'>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-+=!@#$%&*()[]{}<>,.:;</span>"
+				</p>
+			</span>
+			Password size: <input id='numeroAleatorio' type='text'/></br>
+			<input type='submit' onclick='GerarSenhaAleatoriaClick()' value='Gerar senha!'/>
+			<p>
+				<span id='senhaAleatoria' style='display:none'/>
+			</p>
+		`
+	];
+	
+	const impressao = {
+		parte1: parte1
+	}
+	const markup = `
+		${impressao.parte1}
+	`;
+	document.getElementById("divFormsForSelect").innerHTML = markup;
+}
+
+function GerarSenhaAleatoriaClick(){
+	var tamanhoDaSenha = document.getElementById("numeroAleatorio").value;
+	var senhaAleatoria = document.getElementById("senhaAleatoria");
+	var parametroParaMontarSenha = document.getElementById("listaDeCaracteresPossiveis").innerHTML;
+	console.log(parametroParaMontarSenha);
+	senhaAleatoria.style.display = "none";
+	senhaAleatoria.innerHTML = "";
+	for(var i = 0; i < tamanhoDaSenha; i++){
+		var numeroRandomico = (Math.random() * (parametroParaMontarSenha.length - 0) + 0);
+		//var impressaoConsole = "Número randômico em: {0} valor randômico: {1}";
+		//console.log(impressaoConsole.replace("{0}", i).replace("{1}", numeroRandomico));
+		$("#senhaAleatoria").append(parametroParaMontarSenha.substring(numeroRandomico, (numeroRandomico + 1)));
+	}
+	senhaAleatoria.style.display = "block";
+}
 
 // proposed exercises in HTML5
 function edpHtml1(){
