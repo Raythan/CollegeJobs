@@ -533,29 +533,33 @@ function displayBlockCurriculum(){
 			<span class="titulo">Ambiente de teste:</span> <span class="subTitulo">https://raythan7.000webhostapp.com/</span></br></br>
 			
 			<span class="titulo">Objetivo</span></br>
-			<span class="subTitulo">Estágio/programador/analista/desenvolvedor de sistemas</span></br></br>
+			<span class="subTitulo">Atender de maneira satisfatória e com comprometimento de responsabilidades impostas a resolver os impasses gerados nos processos e novas melhorias da empresa.</span></br></br>
 
 			<span class="titulo">Formação</span></br>
 			<span class="subTitulo">Superior - Ciências da Computação (Cursando 4º Semestre)</span></br>
-			<span class="subTitulo">Técnico - Mecatrônica (2015)</span></br>
+			<span class="subTitulo">Técnico - Mecatrônica (2015)</span></br></br>
 
 			<span class="titulo">Conhecimentos Extracurriculares</span></br>
 			<span class="subTitulo">- Desenvolvimento – HTML5, PHP, CSS3, Javascript(ES6), C++, ASP .NET, SQL Server, MySQL.</span></br>
 			<span class="subTitulo">- Algoritmo e lógica de programação.</span></br>
-			<span class="subTitulo">- Orientação a Objetos.</span></br>
+			<span class="subTitulo">- Orientação a Objetos – Utilizando padrões de projeto.</span></br>
 			<span class="subTitulo">- Inglês Intermediário.</span></br>
 			<span class="subTitulo">- Montagem e manutenção de computadores.</span></br>
 			<span class="subTitulo">- Pacote Office</span></br></br>
+			<span class="subTitulo">- Sistema de gerenciamento: SAP, Jira, HostedRedmine, Confluence, Trello.</span></br></br>
+			<span class="subTitulo">- Metodologias de controle de qualidade: Kaizen, 5s.</span></br></br>
 
 			<span class="titulo">Experiência Profissional</span></br>
-			<span class="subTitulo">FOXCONN Brasil – (05/2012 – 10/2018)</span></br>
-			<span class="subTitulo">Técnico de produção – (Coordenação, auxílio e desenvolvimento de equipes para produção e melhorias; Análise, metragem e correção de falhas)</span></br></br>
+			<span class="subTitulo"><b>Sinqia - (12/2018 - até a presente data)</b></span></br>
+			<span class="subTitulo">Estagiário - (Modelar e estruturar dados, levantamento de requisitos, desenvolvimento de soluções satisfatórias e manuteníveis para clientes com relacionamento ao mercado financeiro, controle de versionamento de releases, acompanhamento de pendências pelo sistema Jira, Trello, Confluence, refatoração de códigos))</span></br></br>
+			
+			<span class="subTitulo"><b>FOXCONN Brasil – (05/2012 – 10/2018)</b></span></br>
+			<span class="subTitulo">Técnico de produção – (Coordenação, auxílio e desenvolvimento de equipes para produção e melhorias de processo; metragem e correção de falhas de material produtivo; análise e correção em softwares e fixtures (gigas) de teste e automação)</span></br></br>
 
-			<span class="subTitulo">Marcos Tenir Loiola ME – (02/2011 – 05/2012)</span></br>
+			<span class="subTitulo"><b>Marcos Tenir Loiola ME – (02/2011 – 05/2012)</b></span></br>
 			<span class="subTitulo">Auxiliar de topografia – (Cotagem, locação, terraplanagem e desenhista topográfico)</span></br></br>
 
-			<span class="titulo">Qualificações</span>
-				
+			<span class="titulo">Qualificações</span></br>
 			<span class="subTitulo">- Negociador competente.</span></br>
 			<span class="subTitulo">- Planejador eficiente.</span></br>
 			<span class="subTitulo">- Flexibilidade.</span></br>
