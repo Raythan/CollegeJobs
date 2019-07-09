@@ -1,4 +1,31 @@
-var i, estados = ["Acre","Alagoas","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"];
+var i, estados = [
+					"Acre",
+					"Alagoas",
+					"Amapá",
+					"Amazonas",
+					"Bahia",
+					"Ceará",
+					"Distrito Federal",
+					"Espírito Santo",
+					"Goiás","Maranhão",
+					"Mato Grosso",
+					"Mato Grosso do Sul",
+					"Minas Gerais",
+					"Pará",
+					"Paraíba",
+					"Paraná",
+					"Pernambuco",
+					"Piauí",
+					"Rio de Janeiro",
+					"Rio Grande do Norte",
+					"Rio Grande do Sul",
+					"Rondônia",
+					"Roraima",
+					"Santa Catarina",
+					"São Paulo",
+					"Sergipe",
+					"Tocantins"
+				];
 var j = 0, alterConfig = 0;
 var formBack2 = `<div id='formBack2' style='padding:0.5%;'><form action='index.html'><input type='submit' onclick='~/' value='Voltar!'/></form></div></br>`;
 tamanhoTitulo = 30; widthDivMiddleLeft = 5; heightDivMiddleLeft = 5;
@@ -575,14 +602,36 @@ function displayBlockCurriculum(){
 function GerarSenhaAleatoria(){
 	var parte1 = [
 		`
-			<span>
-				This form will generate a random password containing a sizeable password using the characters from the below list.</br>
-				<p>
-					"<span id='listaDeCaracteresPossiveis'>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-+=!@#$%&*()[]{}<>,.:;</span>"
-				</p>
-			</span>
+			
+			<div id="idDivGerarSenhaAleatoria">
+					This form will generate a random password containing a sizeable password using the characters from the below list.<br />
+					
+					<input id="idRadioButtonCaracteresCompleto" type="radio" name="escolha" value="escolha1" checked onclick="mudarOpcaoEscolhaDeSenha()"> Full characters.<br />
+					<input id="idRadioButtonCaracteresCustomizado" type="radio" name="escolha" value="escolha2" onclick="mudarOpcaoEscolhaDeSenha()"> Custom characters.<br />
+					
+					<p id="idParagrafoCaracteresCompleto">
+						<span id="idSpanCaracteresCompletos">
+							ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+=!@#$%&*()[]{}<>,.:;
+						</span>
+					</p>
+					<p id="idParagrafoCaracteresCustomizado" style="display:none">
+						<input type="checkbox" id="idCheckBoxAlfa" name="nomeCheckBoxAlfa" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"/> 
+							<span>
+								ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+							</span><br />
+						<input type="checkbox" id="idCheckBoxNumerico" name="nomeCheckBoxNumerico" value="1234567890"/> 
+						<span>
+							0123456789
+						</span><br />
+						<input type="checkbox" id="idCheckBoxCaracteresEspeciais" name="nomeCheckBoxCaracteresEspeciais" value="_-+=!@#$%&*()[]{}<>,.:;"/> 
+						<span>
+							_-+=!@#$%&*()[]{}<>,.:;
+						</span><br />
+					</p>
+				</span>
+			</div>
 			Password size: <input id='numeroAleatorio' type='text'/></br>
-			<input type='submit' onclick='GerarSenhaAleatoriaClick()' value='Gerar senha!'/>
+			<input type='submit' onclick='GerarSenhaAleatoriaClick()' value='Generate Password!'/>
 			<p>
 				<span id='senhaAleatoria' style='display:none'/>
 			</p>
@@ -598,11 +647,45 @@ function GerarSenhaAleatoria(){
 	document.getElementById("divFormsForSelect").innerHTML = markup;
 }
 
+function mudarOpcaoEscolhaDeSenha(){
+	var paragrafoCaracteresCompleto = document.getElementById("idParagrafoCaracteresCompleto");
+	var paragrafoCaracteresCustomizado = document.getElementById("idParagrafoCaracteresCustomizado");
+	var radioButtonCaracteresCompleto = document.getElementById("idRadioButtonCaracteresCompleto");
+	var radioButtonCaracteresCustomizado = document.getElementById("idRadioButtonCaracteresCustomizado");
+	if(radioButtonCaracteresCompleto.checked){
+		paragrafoCaracteresCompleto.style.display = "block";
+		paragrafoCaracteresCustomizado.style.display = "none";
+	}
+	if(radioButtonCaracteresCustomizado.checked){
+		paragrafoCaracteresCompleto.style.display = "none";
+		paragrafoCaracteresCustomizado.style.display = "block";
+	}
+	
+}
 function GerarSenhaAleatoriaClick(){
 	var tamanhoDaSenha = document.getElementById("numeroAleatorio").value;
 	var senhaAleatoria = document.getElementById("senhaAleatoria");
-	var parametroParaMontarSenha = document.getElementById("listaDeCaracteresPossiveis").innerHTML;
-	console.log(parametroParaMontarSenha);
+	var caracteresAlfa = document.getElementById("idCheckBoxAlfa").value;
+	var caracteresNumericos = document.getElementById("idCheckBoxNumerico").value;
+	var caracteresEspeciais = document.getElementById("idCheckBoxCaracteresEspeciais").value;
+	var parametroParaMontarSenha = "";
+	var radioButtonCaracteresCompleto = document.getElementById("idRadioButtonCaracteresCompleto");
+	if(radioButtonCaracteresCompleto.checked){
+		parametroParaMontarSenha = caracteresAlfa + caracteresEspeciais + caracteresNumericos;
+	}
+	else{
+		if(document.getElementById("idCheckBoxAlfa").checked){
+			parametroParaMontarSenha += caracteresAlfa;
+		}
+		if(document.getElementById("idCheckBoxNumerico").checked){
+			parametroParaMontarSenha += caracteresNumericos;
+		}
+		if(document.getElementById("idCheckBoxCaracteresEspeciais").checked){
+			parametroParaMontarSenha += caracteresEspeciais;
+		}
+	}
+	
+	//console.log(parametroParaMontarSenha);
 	senhaAleatoria.style.display = "none";
 	senhaAleatoria.innerHTML = "";
 	for(var i = 0; i < tamanhoDaSenha; i++){
