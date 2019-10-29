@@ -233,7 +233,8 @@ function formSem4(){
 		</span>
 		<form>
 			<p>
-				<input class='formSelecao' type='submit' onclick='GerarSenhaAleatoria()' value='Gerar senha aleatória'/>
+				<input class='formSelecao' type='submit' onclick='GerarSenhaAleatoria()' value='Gerar senha aleatória.'/>
+				<input class='formSelecao' type='submit' onclick='' value='Gerar cpf aleatório.'/>
 			</p>
 		</form>
 	</fieldset></br></br></br></br>
