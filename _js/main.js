@@ -224,7 +224,6 @@ function formSem3(){
 	`
 	document.getElementById("divFormsForSelect").innerHTML = insImp;
 }
-
 function formSem4(){
 	var formFourthSemester = `
 	<fieldset><legend>Fourth semester exercises</legend>
@@ -233,8 +232,10 @@ function formSem4(){
 		</span>
 		<form>
 			<p>
-				<input class='formSelecao' type='submit' onclick='GerarSenhaAleatoria()' value='Gerar senha aleatória.'/>
 				<input class='formSelecao' type='submit' onclick='' value='Gerar cpf aleatório.'/>
+			</p>
+			<p>
+				<input class='formSelecao' type='submit' onclick='AbrirCalculadoraSimples()' value='Calculadora simples.'/>
 			</p>
 		</form>
 	</fieldset></br></br></br></br>
@@ -607,7 +608,6 @@ function displayBlockCurriculum(){
 function GerarSenhaAleatoria(){
 	var parte1 = [
 		`
-			
 			<div id="idDivGerarSenhaAleatoria">
 					This form will generate a random password containing a sizeable password using the characters from the below list.<br />
 					
@@ -651,7 +651,6 @@ function GerarSenhaAleatoria(){
 	`;
 	document.getElementById("divFormsForSelect").innerHTML = markup;
 }
-
 function mudarOpcaoEscolhaDeSenha(){
 	var paragrafoCaracteresCompleto = document.getElementById("idParagrafoCaracteresCompleto");
 	var paragrafoCaracteresCustomizado = document.getElementById("idParagrafoCaracteresCustomizado");
@@ -701,7 +700,103 @@ function GerarSenhaAleatoriaClick(){
 	}
 	senhaAleatoria.style.display = "block";
 }
-
+function AbrirCalculadoraSimples(){
+	var calculadoraTabela = [
+		`
+			<table id="idCalculadoraTabela">
+				<tr id="idCalculadoraTabelaLinha1">
+					<td id="idValorCalculadora1" onclick="insereValorCalculadora('1')">1</td>
+					<td id="idValorCalculadora2" onclick="insereValorCalculadora('2')">2</td>
+					<td id="idValorCalculadora3" onclick="insereValorCalculadora('3')">3</td>
+					<td id="idValorCalculadoraSubtrair" onclick="insereValorCalculadora('-')">-</td>
+				</tr>
+				<tr id="idCalculadoraTabelaLinha2">
+					<td id="idValorCalculadora4" onclick="insereValorCalculadora('4')">4</td>
+					<td id="idValorCalculadora5" onclick="insereValorCalculadora('5')">5</td>
+					<td id="idValorCalculadora6" onclick="insereValorCalculadora('6')">6</td>
+					<td id="idValorCalculadoraSomar" onclick="insereValorCalculadora('+')">+</td>
+				</tr>
+				<tr id="idCalculadoraTabelaLinha3">
+					<td id="idValorCalculadora7" onclick="insereValorCalculadora('7')">7</td>
+					<td id="idValorCalculadora8" onclick="insereValorCalculadora('8')">8</td>
+					<td id="idValorCalculadora9" onclick="insereValorCalculadora('9')">9</td>
+					<td id="idValorCalculadoraMultiplicar" onclick="insereValorCalculadora('*')">*</td>
+				</tr>
+				<tr id="idCalculadoraTabelaLinha4">
+					<td id="idValorCalculadora0" onclick="insereValorCalculadora('0')">0</td>
+					<!--<td id="idValorCalculadoraVirgula" onclick="insereValorCalculadora(',')">,</td>-->
+					<td id="idValorCalculadoraIgual" onclick="informaResultadoNaTela()" colspan="2">=</td>
+					<td id="idValorCalculadoraDividir" onclick="insereValorCalculadora('/')">/</td>
+				</tr>
+			</table>
+			<br/>
+			<form id="idFormularioRespostaCalculadora">
+				<input id="idFormularioApresentaConta" type="text" value="" readonly/>
+			</form>
+		`
+	];
+	
+	const impressao = {
+		calculadoraTabela: calculadoraTabela
+	}
+	const markup = `
+		${impressao.calculadoraTabela}
+	`;
+	document.getElementById("divFormsForSelect").innerHTML = markup;	
+}
+function insereValorCalculadora(valorCalculadora){
+	//alert("Entrei");
+	if(!validaInsereValor(valorCalculadora))
+		return;
+	document.getElementById("idFormularioApresentaConta").value += valorCalculadora;
+}
+function validaInsereValor(valorCalculadora){
+	var regex = /^[0-9]+$/;
+	var regexSimbolos = ['+', '-', '*', '/'];//, ','];
+	var flagSimbolo = false;
+	var calculadoraValorAtual = document.getElementById("idFormularioApresentaConta").value;
+	
+	// Verifica se são números sendo inseridos.
+	if(valorCalculadora.match(regex))
+		return true;
+	
+	// Verifica se são símbolos sendo inseridos.
+	regexSimbolos.forEach(function (item){
+		// Se o valor inserido estiver no array regexSimbolos altera a flag para verdadeiro.
+		if(item === valorCalculadora)
+			flagSimbolo = true;
+	})
+	
+	// Se não tiver número na calculadora ou já tiver um sinal de operação não insere nada.
+	if(!calculadoraValorAtual.match(regex))
+		return false;
+	
+	return flagSimbolo;
+}
+function informaResultadoNaTela(){
+	var calculadoraValorAtual = document.getElementById("idFormularioApresentaConta").value;
+	
+	if(calculadoraValorAtual.includes('+')){
+		console.log("Soma");
+		var arrayOperacao = calculadoraValorAtual.split('+');
+		document.getElementById("idFormularioApresentaConta").value = (parseInt(arrayOperacao[0], 10) + parseInt(arrayOperacao[1], 10)).toString();
+	}
+	else if(calculadoraValorAtual.includes('-')){
+		console.log("Subtração");
+		var arrayOperacao = calculadoraValorAtual.split('-');
+		document.getElementById("idFormularioApresentaConta").value = (parseInt(arrayOperacao[0], 10) - parseInt(arrayOperacao[1], 10)).toString();
+	}
+	else if(calculadoraValorAtual.includes('*')){
+		console.log("Multiplicação");
+		var arrayOperacao = calculadoraValorAtual.split('*');
+		document.getElementById("idFormularioApresentaConta").value = (parseInt(arrayOperacao[0], 10) * parseInt(arrayOperacao[1], 10)).toString();
+	}
+	else if(calculadoraValorAtual.includes('/')){
+		console.log("Divisão");
+		var arrayOperacao = calculadoraValorAtual.split('/');
+		document.getElementById("idFormularioApresentaConta").value = (parseInt(arrayOperacao[0], 10) / parseInt(arrayOperacao[1], 10)).toString();
+	}
+}
 // proposed exercises in HTML5
 function edpHtml1(){
 	var parte1 = [
@@ -722,7 +817,6 @@ function edpHtml1(){
 		selection.add(option, selection[0]);
 	}
 }
-
 function edpHtml2(){
 	var parte1 = `
 		<table>
@@ -761,8 +855,6 @@ function edpHtml2(){
 	`;
 	document.getElementById("divFormsForSelect").innerHTML = markup;
 }
-
-
 
 /****************************************************************************************************
 *							These are methods to mathematic problems								*
